@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mise à jour du firmware sur les switches Cisco 2960</title>
+</head>
+<body>
+    <h1>Mise à jour du firmware sur les switches Cisco 2960</h1>
+    <p>Les switches Cisco 2960 sont couramment utilisés dans les petites et moyennes entreprises (PME) pour leur fiabilité et leur coût abordable. Garder le firmware à jour sur ces switches est important pour maintenir la sécurité et les performances du réseau.</p>
+    
+    <h2>Prérequis :</h2>
+    <ul>
+        <li>Switch Cisco 2960</li>
+        <li>Serveur TFTP</li>
+        <li>Câble Ethernet</li>
+        <li>Ordinateur avec logiciel d'émulation de terminal</li>
+    </ul>
+    
+    <h2>Étapes :</h2>
+    <h3>1. Télécharger le firmware :</h3>
+    <ul>
+        <li>Va sur le site web de Cisco et navigue vers la page de téléchargement pour ton modèle spécifique de switch Cisco 2960.</li>
+        <li>Sélectionne la dernière version de firmware disponible (General Availability - GA).</li>
+        <li>Télécharge l'image du firmware sur un serveur TFTP.</li>
+    </ul>
+    
+    <h3>2. Se connecter au switch :</h3>
+    <ul>
+        <li>Connecte une extrémité d'un câble Ethernet à un port Ethernet du switch et l'autre extrémité à un port Ethernet de ton ordinateur.</li>
+        <li>Ouvre le logiciel d'émulation de terminal sur ton ordinateur.</li>
+        <li>Configure le logiciel d'émulation de terminal avec les paramètres suivants :
+            <ul>
+                <li>Speed : 100 Mbps</li>
+                <li>Duplex : Full</li>
+                <li>Flow control : None</li>
+            </ul>
+        </li>
+        <li>Entre les commandes suivantes dans le terminal :
+            <ul>
+                <li>Username : admin</li>
+                <li>Password : <mot de passe></li>
+            </ul>
+            Remplace <mot de passe> par le mot de passe de l'utilisateur admin sur le switch.
+        </li>
+    </ul>
+    
+    <h3>3. Copier le firmware sur le switch :</h3>
+    <ul>
+        <li>Entre la commande suivante dans le terminal :
+            <pre><code>copy tftp://<tftp_server_ip>/<firmware_image> flash:</code></pre>
+            Remplace <tftp_server_ip> par l'adresse IP du serveur TFTP et <firmware_image> par le nom du fichier de l'image du firmware.
+        </li>
+    </ul>
+    
+    <h3>4. Vérifier le firmware :</h3>
+    <ul>
+        <li>Entre la commande suivante dans le terminal :
+            <pre><code>show flash:</code></pre>
+            Vérifie que l'image du firmware est listée dans la sortie.
+        </li>
+    </ul>
+    
+    <h3>5. Redémarrer le switch :</h3>
+    <ul>
+        <li>Entre la commande suivante dans le terminal :
+            <pre><code>reload</code></pre>
+            Le switch va redémarrer et le nouveau firmware sera chargé.
+        </li>
+    </ul>
+    
+    <h3>6. Vérifier le nouveau firmware :</h3>
+    <ul>
+        <li>Entre la commande suivante dans le terminal :
+            <pre><code>show version</code></pre>
+            La sortie de cette commande montrera la nouvelle version du firmware.
+        </li>
+    </ul>
+    
+    <h2>Notes supplémentaires :</h2>
+    <ul>
+        <li>Il est recommandé de sauvegarder la configuration du switch avant de mettre à jour le firmware.</li>
+        <li>Ne mets pas à jour le firmware pendant les heures de pointe d'utilisation du réseau.</li>
+        <li>Si tu rencontres des problèmes pendant le processus de mise à jour, consulte la documentation Cisco ou contacte le support Cisco.</li>
+    </ul>
+    
+    <h2>Conseils :</h2>
+    <ul>
+        <li>Utilise un onduleur (UPS) pour alimenter le switch et le serveur TFTP en cas de coupure de courant.</li>
+        <li>Utilise un câble Ethernet dédié pour la connexion TFTP afin d'éviter la congestion du réseau.</li>
+        <li>TFTP est un protocole simple, mais il existe plusieurs méthodes alternatives pour télécharger le firmware sur les switches Cisco, comme HTTP, HTTPS et USB.</li>
+    </ul>
+    
+    <p>En suivant ces étapes, tu peux mettre à jour le firmware de tes switches Cisco 2960 de manière sûre et facile.</p>
+</body>
+</html>
